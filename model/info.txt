@@ -1,0 +1,17 @@
+776075057
+فتحي محمد  حميد الحداد 
+declare
+	v_exist number;
+begin
+	select count(*) into v_exist 
+	from Origin_Info ;
+	if(v_exist < 0)then
+		go_block('ORIGIN_INFO');
+		execute_query;
+		set_block_property('ORIGIN_INFO' , Insert_Allowed , Property_False);
+	else
+		go_block('ORIGIN_INFO');
+	end if;
+end;
+
+		
